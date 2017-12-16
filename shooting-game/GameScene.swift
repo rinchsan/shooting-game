@@ -47,6 +47,13 @@ class GameScene: SKScene {
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let missile = SKSpriteNode(imageNamed: "missile")
+        missile.position = CGPoint(x: self.spaceship.position.x, y: self.spaceship.position.y + 50)
+        addChild(missile)
+
+        let moveToTop = SKAction.moveTo(y: frame.height + 10, duration: 0.3)
+        let remove = SKAction.removeFromParent()
+        missile.run(SKAction.sequence([moveToTop, remove]))
     }
 
 }
