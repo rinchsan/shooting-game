@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		579F836A1FE5B5B90063750D /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 579F83691FE5B5B90063750D /* Explosion.sks */; };
 		57DC7C791FE281B200B631C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DC7C781FE281B200B631C7 /* AppDelegate.swift */; };
 		57DC7C7B1FE281B200B631C7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 57DC7C7A1FE281B200B631C7 /* GameScene.sks */; };
 		57DC7C7D1FE281B200B631C7 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 57DC7C7C1FE281B200B631C7 /* Actions.sks */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		579F83691FE5B5B90063750D /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		57DC7C751FE281B200B631C7 /* shooting-game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "shooting-game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57DC7C781FE281B200B631C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57DC7C7A1FE281B200B631C7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				57DC7C851FE281B200B631C7 /* Assets.xcassets */,
 				57DC7C871FE281B200B631C7 /* LaunchScreen.storyboard */,
 				57DC7C8A1FE281B200B631C7 /* Info.plist */,
+				579F83691FE5B5B90063750D /* Explosion.sks */,
 			);
 			path = "shooting-game";
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 				57DC7C861FE281B200B631C7 /* Assets.xcassets in Resources */,
 				57DC7C891FE281B200B631C7 /* LaunchScreen.storyboard in Resources */,
 				57DC7C7D1FE281B200B631C7 /* Actions.sks in Resources */,
+				579F836A1FE5B5B90063750D /* Explosion.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
