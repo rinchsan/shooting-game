@@ -18,6 +18,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var accelaration: CGFloat = 0.0
 
     var timer: Timer?
+    var timerForAsteroud: Timer?
+    var asteroudDuration: TimeInterval = 6.0 {
+        didSet {
+            if asteroudDuration < 2.0 {
+                timerForAsteroud?.invalidate()
+            }
+        }
+    }
     var score: Int = 0 {
         didSet {
             scoreLabel.text = "Score: \(score)"
@@ -88,6 +96,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bestScoreLabel.fontSize = 30
         bestScoreLabel.position = scoreLabel.position.applying(CGAffineTransform(translationX: 0, y: -bestScoreLabel.frame.height * 1.5))
         addChild(bestScoreLabel)
+
+        timerForAsteroud = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: true, block: { _ in
+            self.asteroudDuration -= 0.5
+        })
     }
 
     override func didSimulatePhysics() {
@@ -127,7 +139,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         asteroid.physicsBody?.collisionBitMask = 0
         addChild(asteroid)
 
-        let move = SKAction.moveTo(y: -frame.height / 2 - asteroid.frame.height, duration: 6.0)
+        let move = SKAction.moveTo(y: -frame.height / 2 - asteroid.frame.height, duration: asteroudDuration)
         let remove = SKAction.removeFromParent()
         asteroid.run(SKAction.sequence([move, remove]))
     }
