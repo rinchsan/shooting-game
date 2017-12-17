@@ -2,4 +2,4 @@
 
 ### DEMO
 
-![](shooting-game.gif)
+<img src="shooting-game.gif" width=200>
