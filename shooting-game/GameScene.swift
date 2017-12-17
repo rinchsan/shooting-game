@@ -16,6 +16,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var accelaration: CGFloat = 0.0
 
     var timer: Timer?
+    var score: Int = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
 
     let spaceshipCategory: UInt32 = 0b0001
     let missileCategory: UInt32 = 0b0010
@@ -24,6 +29,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     var earth: SKSpriteNode!
     var spaceship: SKSpriteNode!
+    var hearts: [SKSpriteNode] = []
+    var scoreLabel: SKLabelNode!
 
     override func didMove(to view: SKView) {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
@@ -59,6 +66,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
             self.addAsteroid()
         })
+
+        for i in 1...5 {
+            let heart = SKSpriteNode(imageNamed: "heart")
+            heart.position = CGPoint(x: -frame.width / 2 + heart.frame.height * CGFloat(i), y: frame.height / 2 - heart.frame.height)
+            addChild(heart)
+            hearts.append(heart)
+        }
+
+        scoreLabel = SKLabelNode(text: "Score: 0")
+        scoreLabel.fontName = "Papyrus"
+        scoreLabel.fontSize = 50
+        scoreLabel.position = CGPoint(x: -frame.width / 2 + scoreLabel.frame.width / 2 + 50, y: frame.height / 2 - scoreLabel.frame.height * 5)
+        addChild(scoreLabel)
     }
 
     override func didSimulatePhysics() {
@@ -123,10 +143,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         asteroidNode.removeFromParent()
         if target.categoryBitMask == missileCategory {
             targetNode.removeFromParent()
+            score += 5
         }
 
         self.run(SKAction.wait(forDuration: 1.0)) {
             explosion.removeFromParent()
+        }
+
+        if target.categoryBitMask == spaceshipCategory || target.categoryBitMask == earthCategory {
+            guard let heart = hearts.last else { return }
+            heart.removeFromParent()
+            hearts.removeLast()
         }
     }
 
