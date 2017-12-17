@@ -2,4 +2,4 @@
 
 ### DEMO
 
-<img src="shooting-game.gif" width=200>
+<img src="shooting-game.gif" width=250>
